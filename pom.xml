@@ -77,7 +77,7 @@
     </dependencies>
 
     <build>
-        <finalName>ROOT</finalName>
+        <finalName>personapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
