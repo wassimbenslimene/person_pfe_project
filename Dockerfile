@@ -3,4 +3,4 @@ From tomcat:8-jre8
 
 # Maintainer 
 MAINTAINER "wassim_ben_slimene" 
-COPY ./webapp.war /usr/local/tomcat/webapps
+COPY ./personapp.war /usr/local/tomcat/webapps
