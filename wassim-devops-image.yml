@@ -1,0 +1,19 @@
+---
+- hosts: ansible-server
+  become: true
+
+  tasks:
+          - name: create docker image using war file
+            command: docker build -t wassim-devops-back-image:latest .
+            args:
+              chdir: /opt/docker
+
+          - name: create tag to image
+            command: docker tag wassim-devops-back-image wassim97/wassim-devops-back-image
+
+          - name: push image on to dockerhub
+            command: docker push wassim97/wassim-devops-back-image
+
+          - name: remove docker images from ansible server
+            command: docker rmi wassim-devops-back-image:latest wassim97/wassim-devops-back-image
+            ignore_errors: yes
