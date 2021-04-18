@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+          - name: stop current running container
+            command: docker container stop wassim-devops-back-container
+            ignore_errors: yes
+
+          - name: remove stopped container
+            command: docker container rm wassim-devops-back-container
+            ignore_errors: yes
+
+          - name: remove docker image
+            command: docker rmi wassim97/wassim-devops-back-image:latest
+            ignore_errors: yes
+
+          - name: pull docker image from dockerhub
+            command: docker pull wassim97/wassim-devops-back-image:latest
+
+          - name: create container using wassim-devops-image
+            command: docker run -d --name wassim-devops-back-container -p 8080:8080 wassim97/wassim-devops-back-image:latest
